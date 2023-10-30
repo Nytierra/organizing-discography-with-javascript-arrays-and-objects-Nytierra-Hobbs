@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class CodeRockers {
+    public static void main(String[] args) {
+        String bandName = "The CodeRockers";
+        String[] albums = {"CodeRockers Unplugged", "The Hackers", "Debuggers' Delight"};
+        String[] album1Songs = {"Debuggin' Blues", "Variable Love", "Loopy Nights"};
+        String[] album2Songs = {"Hack It", "Binary Beat", "Code of Silence"};
+        String[] album3Songs = {"Dancing on Keys", "Sweet Syntax", "Exceptional Love"};
+
+        // Create an array 'band' that includes 'bandName' and 'albums'
+        Object[] band = {bandName, albums};
+
+        // Print the 'band' array
+        System.out.println("Band Information: " + java.util.Arrays.toString(band));
+
+        // Create an object 'bandObject' where 'bandName' is the key, and 'albums' is the value
+        Map<String, Object> bandObject = new HashMap<>();
+        bandObject.put(bandName, albums);
+
+        // Access the second album 
+        String secondAlbum = albums[1];
+
+        // Print the 'bandObject' and 'secondAlbum'
+        System.out.println("bandObject: " + bandObject);
+        System.out.println("Second Album: " + secondAlbum);
+
+        // Define the albumObjects 
+        ArrayList<Map<String, Object>> albumObjects = new ArrayList<>();
+
+        // Create album objects and add them to the albumObjects 
+        Map<String, Object> album1 = new HashMap<>();
+        album1.put("albumName", albums[0]);
+        album1.put("songs", album1Songs);
+
+        Map<String, Object> album2 = new HashMap<>();
+        album2.put("albumName", albums[1]);
+        album2.put("songs", album2Songs);
+
+        Map<String, Object> album3 = new HashMap<>();
+        album3.put("albumName", albums[2]);
+        album3.put("songs", album3Songs);
+
+        albumObjects.add(album1);
+        albumObjects.add(album2);
+        albumObjects.add(album3);
+
+        // Access the first song from the second album 
+        String firstSongSecondAlbum = ((String[]) albumObjects.get(1).get("songs"))[0];
+
+        // Add a new song "Error 404" to the third album
+        ArrayList<String> album3SongsList = (ArrayList<String>) album3.get("songs");
+        album3SongsList.add("Error 404");
+
+        // Print the 'firstSongSecondAlbum' and the updated albumObjects
+        System.out.println("First Song from the Second Album: " + firstSongSecondAlbum);
+        System.out.println("Updated albumObjects: " + albumObjects);
+
+        // Create the bandObject and update it to include albumObjects
+        bandObject.put("albumObjects", albumObjects);
+
+        // Access the band name from the 'bandObject'
+        String bandNameFromBandObject = (String) bandObject.get(bandName);
+
+        // Print the 'bandObject'
+        System.out.println("Band Object: " + bandObject);
+        System.out.println("Band Name from Band Object: " + bandNameFromBandObject);
+    }
+}
